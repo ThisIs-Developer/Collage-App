@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Enhanced Collage System</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         .dashboard-header {
             display: flex;
@@ -53,16 +54,23 @@
         
         .nav-btn {
             padding: 8px 16px;
-            background: #667eea;
+            background: #000000;
             color: white;
             text-decoration: none;
             border-radius: 6px;
             font-size: 0.9rem;
-            transition: background-color 0.3s;
+            border: 2px solid #000000;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
         }
         
         .nav-btn:hover {
-            background: #5a6fd8;
+            background: #333333;
+            border-color: #333333;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
         
         .nav-btn.secondary {
@@ -118,29 +126,41 @@
         
         .action-btn {
             padding: 6px 12px;
-            border: none;
+            border: 2px solid;
             border-radius: 4px;
             cursor: pointer;
             font-size: 0.85rem;
-            transition: background-color 0.3s;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
         }
         
         .action-btn.edit {
-            background: #007bff;
-            color: white;
+            background: #ffffff;
+            color: #000000;
+            border-color: #000000;
         }
         
         .action-btn.edit:hover {
-            background: #0056b3;
+            background: #000000;
+            color: #ffffff;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
         }
         
         .action-btn.delete {
-            background: #dc3545;
-            color: white;
+            background: #ffffff;
+            color: #6c757d;
+            border-color: #6c757d;
         }
         
         .action-btn.delete:hover {
-            background: #c82333;
+            background: #6c757d;
+            color: #ffffff;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(108, 117, 125, 0.15);
         }
         
         .create-new-section {
@@ -154,17 +174,24 @@
         
         .create-new-btn {
             padding: 15px 30px;
-            background: #28a745;
+            background: #000000;
             color: white;
             text-decoration: none;
             border-radius: 8px;
             font-size: 1.1rem;
             font-weight: 500;
-            transition: background-color 0.3s;
+            border: 2px solid #000000;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
         
         .create-new-btn:hover {
-            background: #218838;
+            background: #333333;
+            border-color: #333333;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
         
         .empty-state {
@@ -207,14 +234,14 @@
                 </div>
             </div>
             <div class="dashboard-nav">
-                <a href="/index.html" class="nav-btn">Create New Collage</a>
-                <a href="/auth/logout" class="nav-btn secondary">Logout</a>
+                <a href="/index.html" class="nav-btn"><i class="fas fa-plus"></i> Create New Collage</a>
+                <a href="/auth/logout" class="nav-btn secondary"><i class="fas fa-sign-out-alt"></i> Logout</a>
             </div>
         </div>
         
         <div class="dashboard-content">
             <div class="collage-list">
-                <h2>Your Collages</h2>
+                <h2><i class="fas fa-images"></i> Your Collages</h2>
                 <div id="collagesList">
                     <div class="loading">Loading your collages...</div>
                 </div>
@@ -224,7 +251,7 @@
                 <div class="create-new-section">
                     <h3>Ready to create something beautiful?</h3>
                     <p>Start by uploading 2-6 images and choose from various layout options.</p>
-                    <a href="/index.html" class="create-new-btn">Create New Collage</a>
+                    <a href="/index.html" class="create-new-btn"><i class="fas fa-plus"></i> Create New Collage</a>
                 </div>
             </div>
         </div>
@@ -282,8 +309,8 @@
                             <p><small>Created: ${new Date(collage.created_at).toLocaleDateString()}</small></p>
                         </div>
                         <div class="collage-actions">
-                            <button class="action-btn edit" onclick="editCollage(${collage.id})">Edit</button>
-                            <button class="action-btn delete" onclick="deleteCollage(${collage.id})">Delete</button>
+                            <button class="action-btn edit" onclick="editCollage(${collage.id})"><i class="fas fa-edit"></i> Edit</button>
+                            <button class="action-btn delete" onclick="deleteCollage(${collage.id})"><i class="fas fa-trash"></i> Delete</button>
                         </div>
                     </div>
                 `).join('');

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enhanced Collage System</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         .auth-bar {
             display: flex;
@@ -90,17 +91,24 @@
         
         .save-btn {
             padding: 12px 24px;
-            background: #28a745;
+            background: #000000;
             color: white;
-            border: none;
+            border: 2px solid #000000;
             border-radius: 6px;
             cursor: pointer;
             font-size: 1rem;
-            transition: background-color 0.3s;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
         
         .save-btn:hover {
-            background: #218838;
+            background: #333333;
+            border-color: #333333;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
         
         .save-btn:disabled {
@@ -146,11 +154,11 @@
             <p>Create beautiful collages with 2-6 images using flexible layouts</p>
             <div class="auth-bar" id="authBar">
                 <div class="user-info" id="userInfo" style="display: none;">
-                    <div class="user-avatar" id="userAvatar"></div>
+                    <div class="user-avatar" id="userAvatar"><i class="fas fa-user"></i></div>
                     <span id="userName"></span>
                 </div>
                 <div class="auth-buttons" id="authButtons">
-                    <a href="/auth/google" class="auth-btn">Login with Google</a>
+                    <a href="/auth/google" class="auth-btn"><i class="fab fa-google"></i> Login with Google</a>
                 </div>
             </div>
         </header>
@@ -158,14 +166,10 @@
         <main>
             <!-- Image Upload Section -->
             <section class="upload-section">
-                <h2>Upload Images</h2>
+                <h2><i class="fas fa-upload"></i> Upload Images</h2>
                 <div class="upload-area" id="uploadArea">
                     <div class="upload-placeholder">
-                        <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                            <polyline points="7,10 12,15 17,10"></polyline>
-                            <line x1="12" y1="15" x2="12" y2="3"></line>
-                        </svg>
+                        <i class="fas fa-cloud-upload-alt upload-icon"></i>
                         <p>Drop images here or click to upload</p>
                         <p class="upload-hint">Support 2-6 images (JPG, PNG, GIF)</p>
                     </div>
@@ -178,7 +182,7 @@
 
             <!-- Layout Selection Section -->
             <section class="layout-section">
-                <h2>Choose Layout</h2>
+                <h2><i class="fas fa-th-large"></i> Choose Layout</h2>
                 <div class="layout-filter">
                     <label for="imageCountFilter">Filter by image count:</label>
                     <select id="imageCountFilter" disabled>
@@ -198,7 +202,7 @@
 
             <!-- Collage Preview Section -->
             <section class="preview-section">
-                <h2>Collage Preview</h2>
+                <h2><i class="fas fa-eye"></i> Collage Preview</h2>
                 <div class="preview-container">
                     <div class="collage-canvas" id="collageCanvas">
                         <div class="canvas-placeholder">
@@ -208,16 +212,16 @@
                     
                     <div class="preview-controls">
                         <button id="createCollageBtn" class="btn btn-primary" disabled>
-                            Create Collage
+                            <i class="fas fa-plus"></i> Create Collage
                         </button>
                         <button id="downloadBtn" class="btn btn-secondary" disabled>
-                            Download Collage
+                            <i class="fas fa-download"></i> Download Collage
                         </button>
                         <button id="demoBtn" class="btn btn-outline">
-                            Load Demo Images
+                            <i class="fas fa-images"></i> Load Demo Images
                         </button>
                         <button id="resetBtn" class="btn btn-outline">
-                            Reset
+                            <i class="fas fa-undo"></i> Reset
                         </button>
                     </div>
                 </div>
@@ -225,7 +229,7 @@
 
             <!-- Options Section -->
             <section class="options-section">
-                <h2>Options</h2>
+                <h2><i class="fas fa-cog"></i> Options</h2>
                 <div class="options-grid">
                     <div class="option-group">
                         <label for="canvasSize">Canvas Size:</label>
@@ -258,14 +262,14 @@
 
             <!-- Save Section (only visible when authenticated) -->
             <section class="save-section" id="saveSection" style="display: none;">
-                <h2>Save Your Collage</h2>
+                <h2><i class="fas fa-save"></i> Save Your Collage</h2>
                 <div class="save-form">
                     <input type="text" id="collageTitle" placeholder="Enter collage title" required>
                     <textarea id="collageDescription" placeholder="Enter description (optional)"></textarea>
                 </div>
                 <div class="save-buttons">
-                    <button id="saveBtn" class="save-btn">Save Collage</button>
-                    <button id="saveAndDownloadBtn" class="save-btn">Save & Download</button>
+                    <button id="saveBtn" class="save-btn"><i class="fas fa-save"></i> Save Collage</button>
+                    <button id="saveAndDownloadBtn" class="save-btn"><i class="fas fa-cloud-download-alt"></i> Save & Download</button>
                 </div>
                 <div id="saveMessage" class="message"></div>
             </section>
@@ -309,9 +313,9 @@
             document.getElementById('userName').textContent = currentUser.name;
             document.getElementById('userAvatar').textContent = currentUser.name.charAt(0).toUpperCase();
             document.getElementById('authButtons').innerHTML = `
-                <a href="/dashboard.html" class="auth-btn">Dashboard</a>
-                ${currentUser.role === 'admin' ? '<a href="/admin.html" class="auth-btn">Admin</a>' : ''}
-                <a href="/auth/logout" class="auth-btn">Logout</a>
+                <a href="/dashboard.html" class="auth-btn"><i class="fas fa-home"></i> Dashboard</a>
+                ${currentUser.role === 'admin' ? '<a href="/admin.html" class="auth-btn"><i class="fas fa-users-cog"></i> Admin</a>' : ''}
+                <a href="/auth/logout" class="auth-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
             `;
             document.getElementById('saveSection').style.display = 'block';
         }
@@ -320,7 +324,7 @@
         function showGuestUI() {
             document.getElementById('userInfo').style.display = 'none';
             document.getElementById('authButtons').innerHTML = `
-                <a href="/auth/google" class="auth-btn">Login with Google</a>
+                <a href="/auth/google" class="auth-btn"><i class="fab fa-google"></i> Login with Google</a>
             `;
             document.getElementById('saveSection').style.display = 'none';
         }
