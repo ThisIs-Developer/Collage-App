@@ -102,6 +102,7 @@
             border: 1px solid #e9ecef;
             border-radius: 8px;
             margin-bottom: 10px;
+            gap: 15px;
         }
         
         .collage-item:hover {
@@ -141,6 +142,7 @@
             background: #ffffff;
             color: #000000;
             border-color: #000000;
+            transition: all 0.3s ease;
         }
         
         .action-btn.edit:hover {
@@ -151,14 +153,16 @@
         }
         
         .action-btn.delete {
-            background: #ffffff;
-            color: #6c757d;
-            border-color: #6c757d;
+            background: #ec1a2f;
+            color: #ffffff;
+            transition: all 0.3s ease;
+            border-color: #dc3545;
         }
         
         .action-btn.delete:hover {
-            background: #6c757d;
+            background: #c82333;
             color: #ffffff;
+            border-color: #c82333;
             transform: translateY(-1px);
             box-shadow: 0 2px 8px rgba(108, 117, 125, 0.15);
         }
@@ -170,6 +174,7 @@
             justify-content: center;
             min-height: 200px;
             text-align: center;
+            gap: 15px;
         }
         
         .create-new-btn {
@@ -235,13 +240,13 @@
             </div>
             <div class="dashboard-nav">
                 <a href="/index.html" class="nav-btn"><i class="fas fa-plus"></i> Create New Collage</a>
-                <a href="/auth/logout" class="nav-btn secondary"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                <a href="/auth/logout" class="nav-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
             </div>
         </div>
         
         <div class="dashboard-content">
             <div class="collage-list">
-                <h2><i class="fas fa-images"></i> Your Collages</h2>
+                <h2><i class="fa-solid fa-image me-2" style="margin:10px 10px;"></i>Your Collages</h2>
                 <div id="collagesList">
                     <div class="loading">Loading your collages...</div>
                 </div>
